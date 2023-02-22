@@ -18,6 +18,7 @@ import ContainerComponent from './ContainerCardComponent';
 import { EView, IViewListUser } from '../models/ConfigModels';
 import { useState } from 'react';
 import ContainerListComponent from './ContainerListComponent';
+import ContainerCardComponent from './ContainerCardComponent';
 
 // const conf: IViewListUser = {
 //   viewState: EView.card,
@@ -61,9 +62,10 @@ export const WraperComponent = (props: IProps) => {
   };
 
   const setSelectedUser = (n: number) => {
-    // users.filter// filter users. state for users. zapolniti dialog 
-    setOpen(true)
-    setCurrentUser(n)
+    const us = users.filter(u=>{u=n});
+    // users.filter// filter users. state for users. zapolniti dialog
+    setOpen(true);
+    setCurrentUser(n);
   };
 
   return (
@@ -95,7 +97,7 @@ export const WraperComponent = (props: IProps) => {
 
         {users.map(u =>
           confWrap.viewState === EView.card ? (
-            <ContainerComponent
+            <ContainerCardComponent
               setSelectedUser={setSelectedUser}
               user={u}
               key={u.idno}
