@@ -1,7 +1,17 @@
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@mui/material';
 import { type } from 'os';
 import { useEffect, useState } from 'react';
 import './App.css';
+import ComponentDialog from './components/ComponentDialog';
 import WraperComponent from './components/WraperComponent';
+import { EView } from './models/ConfigModels';
 import { IUser } from './models/UserModels';
 
 // const users: IUser[] = [
@@ -50,22 +60,22 @@ import { IUser } from './models/UserModels';
 
 function App() {
   const [users, setUsers] = useState<IUser[]>([]);
-  const [isGetData, setIsGetData] = useState<boolean>(false);
+
   useEffect(() => {
-    if (isGetData) {
-      fetch('Users.json')
-        .then(response => response.json())
-        .then(json => setUsers(json.users));
-    } 
-  }, [isGetData]);
+    fetch('Users.json')
+      .then(response => response.json())
+      .then(json => setUsers(json.users));
+  }, []);
+
 
   return (
     <div className="App">
-      <button onClick={()=>setIsGetData(true)}>GET data</button>
       <div style={{ display: 'flex', gap: '15px' }}>
-        <WraperComponent users={users} />
-        <WraperComponent users={users} />
+        <WraperComponent modView={EView.list} users={users} />
+        <WraperComponent modView={EView.card} users={users} />
+        {/* <ComponentDialog /> */}
       </div>
+      
     </div>
   );
 }

@@ -1,4 +1,14 @@
-import { Card, IconButton, Stack } from '@mui/material';
+import {
+  Button,
+  Card,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  IconButton,
+  Stack,
+} from '@mui/material';
 import { IUser } from '../models/UserModels';
 import AlarmIcon from '@mui/icons-material/Alarm';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -16,12 +26,15 @@ import ContainerListComponent from './ContainerListComponent';
 
 interface IProps {
   users: IUser[];
+  modView: EView;
 }
 
 export const WraperComponent = (props: IProps) => {
-  const { users } = props;
+  const { users, modView } = props;
+  const [open, setOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState<number>(0);
   const [confWrap, setConfWrap] = useState<IViewListUser>({
-    viewState: EView.list,
+    viewState: modView,
     viewImage: false,
   });
 
@@ -37,6 +50,20 @@ export const WraperComponent = (props: IProps) => {
       ...confWrap,
       viewState: EView.list,
     }));
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const setSelectedUser = (n: number) => {
+    users.filter// filter users. state for users. zapolniti dialog 
+    setOpen(true)
+    setCurrentUser(n)
   };
 
   return (
@@ -68,12 +95,36 @@ export const WraperComponent = (props: IProps) => {
 
         {users.map(u =>
           confWrap.viewState === EView.card ? (
-            <ContainerComponent user={u} key={u.idno} />
+            <ContainerComponent
+              setSelectedUser={setSelectedUser}
+              user={u}
+              key={u.idno}
+            />
           ) : (
             <ContainerListComponent user={u} key={u.idno} />
           )
         )}
       </Card>
+      <div>
+        <Button variant="outlined" onClick={handleClickOpen}>
+          Open alert dialog
+        </Button>
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle>{currentUser}</DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Let Google help apps determine location. This means sending
+              anonymous location data to Google, even when no apps are running.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose}>Disagree</Button>
+            <Button onClick={handleClose} autoFocus>
+              Agree
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
     </>
   );
 };
