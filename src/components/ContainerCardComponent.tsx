@@ -9,10 +9,15 @@ import { IUser } from '../models/UserModels';
 
 interface IProps {
   user: IUser;
+  setSelectedUser: (idnoUser: number) => void;
 }
 
 const ContainerComponent = (props: IProps) => {
   const { title, description, idno } = props.user;
+  const detailsHandler = () => {
+    props.setSelectedUser(idno);
+   
+  };
 
   return (
     <div>
@@ -29,7 +34,9 @@ const ContainerComponent = (props: IProps) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Details</Button>
+          <Button size="small" onClick={detailsHandler}>
+            Details
+          </Button>
         </CardActions>
       </Card>
     </div>

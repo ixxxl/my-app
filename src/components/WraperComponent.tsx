@@ -61,7 +61,7 @@ export const WraperComponent = (props: IProps) => {
   };
 
   const setSelectedUser = (n: number) => {
-    users.filter// filter users. state for users. zapolniti dialog 
+    // users.filter// filter users. state for users. zapolniti dialog 
     setOpen(true)
     setCurrentUser(n)
   };
