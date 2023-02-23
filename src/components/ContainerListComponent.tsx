@@ -1,12 +1,12 @@
-import { IUser } from "../models/UserModels";
+import { IUser } from '../models/UserModels';
 
 interface IProps {
   user: IUser;
-  }
+}
 const styleObj = {
-  width: "200px",
-  height: "300px",
-  border: "1px solid yellow",
+  width: '200px',
+  height: '300px',
+  border: '1px solid yellow',
 };
 
 const ContainerHorizontalCardComponent = (props: IProps) => {

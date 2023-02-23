@@ -7,8 +7,9 @@ import {
   DialogTitle,
 } from '@mui/material';
 import { type } from 'os';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './App.css';
+import Canvas from './Canvas';
 import WraperComponent from './components/WraperComponent';
 import { EView } from './models/ConfigModels';
 import { IUser } from './models/UserModels';
@@ -66,15 +67,14 @@ function App() {
       .then(json => setUsers(json.users));
   }, []);
 
-
   return (
     <div className="App">
       <div style={{ display: 'flex', gap: '15px' }}>
         <WraperComponent modView={EView.list} users={users} />
         <WraperComponent modView={EView.card} users={users} />
+        {/* <Canvas /> */}
         {/* <ComponentDialog /> */}
       </div>
-      
     </div>
   );
 }

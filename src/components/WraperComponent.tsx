@@ -112,6 +112,9 @@ export const WraperComponent = (props: IProps) => {
                 width={'400px'}
                 height={'400px'}
               ></img>
+              <div style={{ fontSize: 20 }}>
+                Description: {currentUser?.description}
+              </div>
               <canvas className="c1" width={'400px'} height={'300px'} />
             </DialogContentText>
           </DialogContent>
