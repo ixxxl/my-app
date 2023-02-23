@@ -32,14 +32,14 @@ interface IProps {
 
 export const WraperComponent = (props: IProps) => {
   const { users, modView } = props;
+
   const [open, setOpen] = useState(false);
-  const [currentUser, setCurrentUser] = useState<number>(0);
+  const [currentUser, setCurrentUser] = useState<IUser | null>(null);
   const [confWrap, setConfWrap] = useState<IViewListUser>({
     viewState: modView,
     viewImage: false,
   });
 
-  let user, descript;
   const handlerCard = () => {
     setConfWrap(confWrap => ({
       ...confWrap,
@@ -54,21 +54,13 @@ export const WraperComponent = (props: IProps) => {
     }));
   };
 
-  const handleClickOpen = () => {
+  const setSelectedUser = (user: IUser) => {
     setOpen(true);
+    setCurrentUser(user);
   };
 
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const setSelectedUser = (n: number) => {
-    const us = users.filter(u => {
-      u = n;
-    });
-    // users.filter// filter users. state for users. zapolniti dialog
-    setOpen(true);
-    setCurrentUser(n);
   };
 
   return (
@@ -111,16 +103,16 @@ export const WraperComponent = (props: IProps) => {
         )}
       </Card>
       <div>
-        <Button variant="outlined" onClick={handleClickOpen}>
-          Open alert dialog
-        </Button>
         <Dialog open={open} onClose={handleClose}>
-          <DialogTitle>{currentUser}</DialogTitle>
+          <DialogTitle>{currentUser ? currentUser.title : ''}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Name: {user}
-              IDNO: {currentUser}
-              Description: {descript}
+              <img
+                src={currentUser?.urlPhoto}
+                width={'400px'}
+                height={'400px'}
+              ></img>
+              <canvas className="c1" width={'400px'} height={'300px'} />
             </DialogContentText>
           </DialogContent>
           <DialogActions>
