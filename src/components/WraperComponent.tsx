@@ -62,7 +62,7 @@ export const WraperComponent = (props: IProps) => {
   };
 
   const setSelectedUser = (n: number) => {
-    const us = users.filter(u=>{u=n});
+   // const us = users.filter(u=>{u=n});
     // users.filter// filter users. state for users. zapolniti dialog
     setOpen(true);
     setCurrentUser(n);
