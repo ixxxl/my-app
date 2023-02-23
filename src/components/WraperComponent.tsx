@@ -39,6 +39,7 @@ export const WraperComponent = (props: IProps) => {
     viewImage: false,
   });
 
+  let user, descript;
   const handlerCard = () => {
     setConfWrap(confWrap => ({
       ...confWrap,
@@ -62,7 +63,7 @@ export const WraperComponent = (props: IProps) => {
   };
 
   const setSelectedUser = (n: number) => {
-   // const us = users.filter(u=>{u=n});
+    const us = users.filter(u=>{u=n});
     // users.filter// filter users. state for users. zapolniti dialog
     setOpen(true);
     setCurrentUser(n);
@@ -115,8 +116,9 @@ export const WraperComponent = (props: IProps) => {
           <DialogTitle>{currentUser}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              Let Google help apps determine location. This means sending
-              anonymous location data to Google, even when no apps are running.
+              Name: {user}
+              IDNO: {currentUser}
+              Description: {descript}
             </DialogContentText>
           </DialogContent>
           <DialogActions>

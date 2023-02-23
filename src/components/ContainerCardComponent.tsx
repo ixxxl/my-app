@@ -16,7 +16,6 @@ const ContainerComponent = (props: IProps) => {
   const { title, description, idno } = props.user;
   const detailsHandler = () => {
     props.setSelectedUser(idno);
-   
   };
 
   return (
@@ -24,7 +23,7 @@ const ContainerComponent = (props: IProps) => {
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Имя Фамилия {title}
+            Имя Фамилияasdasdas {title}
           </Typography>
           <Typography variant="h5" component="div">
             IDNO {idno}
