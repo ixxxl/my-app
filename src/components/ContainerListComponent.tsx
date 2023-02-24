@@ -1,15 +1,18 @@
+import { IconButton } from '@mui/material';
 import { IUser } from '../models/UserModels';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 interface IProps {
   user: IUser;
 }
+
 const styleObj = {
   width: '200px',
   height: '300px',
   border: '1px solid yellow',
 };
 
-const ContainerHorizontalCardComponent = (props: IProps) => {
+const ContainerListComponent = (props: IProps) => {
   return (
     <div style={styleObj}>
       Имя Фамилия {props.user.title} <hr /> IDNO {props.user.idno} <hr />
@@ -21,4 +24,4 @@ const ContainerHorizontalCardComponent = (props: IProps) => {
   );
 };
 
-export default ContainerHorizontalCardComponent;
+export default ContainerListComponent;

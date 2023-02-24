@@ -75,15 +75,12 @@ export const WraperComponent = (props: IProps) => {
         }}
       >
         <Stack direction="row" spacing={1}>
-          <IconButton onClick={handlerCard}>
+          <IconButton onClick={handlerList}>
             <AddRoadIcon color="primary" />
           </IconButton>
-          <IconButton
-            onClick={handlerList}
-            color="secondary"
-            aria-label="add an alarm"
-          >
-            <MoreHorizIcon />
+
+          <IconButton color="secondary" aria-label="add an alarm">
+            <MoreHorizIcon style={{display:"flex"}} onClick={handlerCard} />
           </IconButton>
           <IconButton color="primary" aria-label="add to shopping cart">
             <AddShoppingCartIcon />
@@ -112,7 +109,7 @@ export const WraperComponent = (props: IProps) => {
                 width={'400px'}
                 height={'400px'}
               ></img>
-              <div style={{ fontSize: 20 }}>
+              <div style={{display:"flex" ,flexDirection:"row", justifyContent:"center", fontSize: 20 }}>
                 Description: {currentUser?.description}
               </div>
               <canvas className="c1" width={'400px'} height={'300px'} />
