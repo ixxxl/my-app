@@ -4,6 +4,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 interface IProps {
   user: IUser;
+  setSelectedUser: (u: IUser) => void;
 }
 
 const styleObj = {
@@ -13,12 +14,15 @@ const styleObj = {
 };
 
 const ContainerListComponent = (props: IProps) => {
+  const detailsHandler = () => {
+    props.setSelectedUser(props.user);
+  };
   return (
-    <div style={styleObj}>
+    <div onClick={detailsHandler} style={styleObj}>
       Имя Фамилия {props.user.title} <hr /> IDNO {props.user.idno} <hr />
       Описание {props.user.description}
       <hr />
-      Фото {props.user.urlPhoto}
+      <img src={props.user.urlPhoto} width="40px"></img>
       <hr />
     </div>
   );

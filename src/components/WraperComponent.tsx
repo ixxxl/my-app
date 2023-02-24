@@ -18,7 +18,6 @@ import ContainerComponent from './ContainerCardComponent';
 import { EView, IViewListUser } from '../models/ConfigModels';
 import { useState } from 'react';
 import ContainerListComponent from './ContainerListComponent';
-import ContainerCardComponent from './ContainerCardComponent';
 
 // const conf: IViewListUser = {
 //   viewState: EView.card,
@@ -80,7 +79,7 @@ export const WraperComponent = (props: IProps) => {
           </IconButton>
 
           <IconButton color="secondary" aria-label="add an alarm">
-            <MoreHorizIcon style={{display:"flex"}} onClick={handlerCard} />
+            <MoreHorizIcon style={{ display: 'flex' }} onClick={handlerCard} />
           </IconButton>
           <IconButton color="primary" aria-label="add to shopping cart">
             <AddShoppingCartIcon />
@@ -89,13 +88,17 @@ export const WraperComponent = (props: IProps) => {
 
         {users.map(u =>
           confWrap.viewState === EView.card ? (
-            <ContainerCardComponent
+            <ContainerComponent
               setSelectedUser={setSelectedUser}
               user={u}
               key={u.idno}
             />
           ) : (
-            <ContainerListComponent user={u} key={u.idno} />
+            <ContainerListComponent
+              setSelectedUser={setSelectedUser}
+              user={u}
+              key={u.idno}
+            />
           )
         )}
       </Card>
@@ -109,7 +112,14 @@ export const WraperComponent = (props: IProps) => {
                 width={'400px'}
                 height={'400px'}
               ></img>
-              <div style={{display:"flex" ,flexDirection:"row", justifyContent:"center", fontSize: 20 }}>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  fontSize: 20,
+                }}
+              >
                 Description: {currentUser?.description}
               </div>
               <canvas className="c1" width={'400px'} height={'300px'} />
