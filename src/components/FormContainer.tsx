@@ -26,12 +26,7 @@ export default function FormPropsTextFields() {
             shrink: true,
           }}
         />
-        <TextField
-          id="outlined-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-        />
+
         {/* <TextField
           id="outlined-password-input"
           label="Password"

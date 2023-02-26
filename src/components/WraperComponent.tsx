@@ -40,26 +40,6 @@ export const WraperComponent = (props: IProps) => {
     viewImage: false,
   });
 
-  const getData = () => {
-    fetch('http://localhost:3010/credit')
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (myJson) {
-        console.log(myJson);
-      });
-  };
-  // useEffect(() => {
-  //   getData();
-  // }, []);
-
-  const handlerCard = () => {
-    setConfWrap(confWrap => ({
-      ...confWrap,
-      viewState: EView.card,
-    }));
-  };
-
   const handlerList = () => {
     setConfWrap(confWrap => ({
       ...confWrap,
@@ -69,12 +49,41 @@ export const WraperComponent = (props: IProps) => {
 
   const setSelectedUser = (user: IUser) => {
     setOpen(true);
-    getData();
+    //getData();
     setCurrentUser(user);
   };
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  // const getData = () => {
+  //   fetch('http://localhost:3010/credit')
+  //     .then(function (response) {
+  //       return response.json();
+  //     })
+  //     .then(function (myJson) {
+  //       console.log(myJson);
+  //     });
+  // };
+  //const [creditNames, setCreditNames] = useState<IUser>({});
+
+  useEffect(() => {
+    fetch('http://localhost:3010/credit')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (myJson) {
+        //setCreditNames(myJson);
+        console.log(myJson);
+      });
+  }, [open]);
+
+  const handlerCard = () => {
+    setConfWrap(confWrap => ({
+      ...confWrap,
+      viewState: EView.card,
+    }));
   };
 
   return (
@@ -142,7 +151,13 @@ export const WraperComponent = (props: IProps) => {
             >
               Description: {currentUser?.description}
             </div>
-            <div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                fontSize: 20,
+              }}
+            >
               <FormPropsTextFields />
             </div>
             <canvas className="c1" width={'400px'} height={'300px'} />
