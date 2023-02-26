@@ -93,8 +93,12 @@ export const WraperComponent = (props: IProps) => {
             <AddRoadIcon color="primary" />
           </IconButton>
 
-          <IconButton color="secondary" aria-label="add an alarm">
-            <MoreHorizIcon style={{ display: 'flex' }} onClick={handlerCard} />
+          <IconButton
+            onClick={handlerCard}
+            color="secondary"
+            aria-label="add an alarm"
+          >
+            <MoreHorizIcon style={{ display: 'flex' }} />
           </IconButton>
           <IconButton color="primary" aria-label="add to shopping cart">
             <AddShoppingCartIcon />
@@ -127,21 +131,27 @@ export const WraperComponent = (props: IProps) => {
                 width={'300px'}
                 height={'300px'}
               ></img>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  fontSize: 20,
-                }}
-              >
-                Description: {currentUser?.description}
-              </div>
-              <div>
-                <FormPropsTextFields />
-              </div>
-              <canvas className="c1" width={'400px'} height={'300px'} />
             </DialogContentText>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                fontSize: 20,
+              }}
+            >
+              Description: {currentUser?.description}
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <FormPropsTextFields />
+            </div>
+
+            <canvas className="c1" width={'400px'} height={'300px'} />
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Disagree</Button>
@@ -156,3 +166,18 @@ export const WraperComponent = (props: IProps) => {
 };
 
 export default WraperComponent;
+
+/* <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    fontSize: 20,
+                  }}
+                ></div> */
+
+// style={{
+//   display: 'flex',
+//   flexDirection: 'column',
+//   justifyContent: 'right',
+// }}
