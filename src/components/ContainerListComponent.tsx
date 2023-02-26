@@ -11,6 +11,9 @@ const styleObj = {
   width: '200px',
   height: '300px',
   border: '1px solid yellow',
+  margin: 0,
+  overflow: 'hidden',
+  cursor: 'pointer',
 };
 
 const ContainerListComponent = (props: IProps) => {

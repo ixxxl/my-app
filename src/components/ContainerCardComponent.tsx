@@ -23,7 +23,14 @@ const ContainerComponent = (props: IProps) => {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div
+        onClick={detailsHandler}
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          cursor: 'pointer',
+        }}
+      >
         <img src={urlPhoto} width={'40px'} height={'40px'}></img>
         <div
           style={{

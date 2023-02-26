@@ -60,5 +60,11 @@
       "description": "options 10",
       "urlPhoto": "https://cdn-icons-png.flaticon.com/512/4825/4825051.png"
     }
+  ],
+  "credit": [
+    {
+      "name": "John Smith",
+      "salary": "1000"
+    }
   ]
 }

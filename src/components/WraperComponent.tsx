@@ -16,8 +16,9 @@ import AddRoadIcon from '@mui/icons-material/AddRoad';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ContainerComponent from './ContainerCardComponent';
 import { EView, IViewListUser } from '../models/ConfigModels';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ContainerListComponent from './ContainerListComponent';
+import FormPropsTextFields from './FormContainer';
 
 // const conf: IViewListUser = {
 //   viewState: EView.card,
@@ -39,6 +40,19 @@ export const WraperComponent = (props: IProps) => {
     viewImage: false,
   });
 
+  // const getData = () => {
+  //   fetch('http://localhost:3010/credit')
+  //     .then(function (response) {
+  //       return response.json();
+  //     })
+  //     .then(function (myJson) {
+  //       console.log(myJson);
+  //     });
+  // };
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+
   const handlerCard = () => {
     setConfWrap(confWrap => ({
       ...confWrap,
@@ -55,6 +69,7 @@ export const WraperComponent = (props: IProps) => {
 
   const setSelectedUser = (user: IUser) => {
     setOpen(true);
+
     setCurrentUser(user);
   };
 
@@ -109,8 +124,8 @@ export const WraperComponent = (props: IProps) => {
             <DialogContentText>
               <img
                 src={currentUser?.urlPhoto}
-                width={'400px'}
-                height={'400px'}
+                width={'300px'}
+                height={'300px'}
               ></img>
               <div
                 style={{
@@ -121,6 +136,9 @@ export const WraperComponent = (props: IProps) => {
                 }}
               >
                 Description: {currentUser?.description}
+              </div>
+              <div>
+                <FormPropsTextFields />
               </div>
               <canvas className="c1" width={'400px'} height={'300px'} />
             </DialogContentText>
