@@ -19,6 +19,7 @@ import { EView, IViewListUser } from '../models/ConfigModels';
 import { useEffect, useState } from 'react';
 import ContainerListComponent from './ContainerListComponent';
 import FormPropsTextFields from './FormContainer';
+import { shadows } from '@mui/system';
 
 // const conf: IViewListUser = {
 //   viewState: EView.card,
@@ -66,7 +67,6 @@ export const WraperComponent = (props: IProps) => {
   //       console.log(myJson);
   //     });
   // };
-  //const [creditNames, setCreditNames] = useState<IUser>({});
 
   useEffect(() => {
     fetch('http://localhost:3010/credit')
@@ -74,7 +74,6 @@ export const WraperComponent = (props: IProps) => {
         return response.json();
       })
       .then(function (myJson) {
-        //setCreditNames(myJson);
         console.log(myJson);
       });
   }, [open]);
@@ -95,6 +94,7 @@ export const WraperComponent = (props: IProps) => {
           flexDirection: 'column',
           gap: '10px',
           padding: '10px',
+          boxShadow: 'initial',
         }}
       >
         <Stack direction="row" spacing={1}>
