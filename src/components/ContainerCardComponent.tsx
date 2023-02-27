@@ -29,6 +29,8 @@ const ContainerComponent = (props: IProps) => {
           display: 'flex',
           justifyContent: 'space-between',
           cursor: 'pointer',
+          outline: '1rem solid',
+          outlineColor: 'ButtonFace',
         }}
       >
         <img src={urlPhoto} width={'40px'} height={'40px'}></img>
@@ -39,6 +41,7 @@ const ContainerComponent = (props: IProps) => {
             flexDirection: 'column',
             alignItems: 'flex-start',
             paddingLeft: '10px',
+            
           }}
         >
           <Typography sx={{ fontSize: 20 }} color="text.primary">

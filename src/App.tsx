@@ -9,7 +9,6 @@ import {
 import { type } from 'os';
 import { useEffect, useState, useRef } from 'react';
 import './App.css';
-import Canvas from './Canvas';
 import WraperComponent from './components/WraperComponent';
 import { EView } from './models/ConfigModels';
 import { IUser } from './models/UserModels';

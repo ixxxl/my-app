@@ -94,7 +94,7 @@ export const WraperComponent = (props: IProps) => {
           flexDirection: 'column',
           gap: '10px',
           padding: '10px',
-          boxShadow: 'initial',
+          
         }}
       >
         <Stack direction="row" spacing={1}>

@@ -13,6 +13,8 @@ const styleObj = {
   margin: 0,
   overflow: 'hidden',
   cursor: 'pointer',
+  outline: '1rem solid',
+  outlineColor: 'ButtonFace',
 };
 
 const ContainerListComponent = (props: IProps) => {
