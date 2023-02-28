@@ -9,9 +9,11 @@ import {
 import { type } from 'os';
 import { useEffect, useState, useRef } from 'react';
 import './App.css';
+import Canvas from './components/CanvasComponent';
 import WraperComponent from './components/WraperComponent';
 import { EView } from './models/ConfigModels';
 import { IUser } from './models/UserModels';
+
 
 // const users: IUser[] = [
 //   {
@@ -60,20 +62,29 @@ import { IUser } from './models/UserModels';
 function App() {
   const [users, setUsers] = useState<IUser[]>([]);
 
+
   useEffect(() => {
     fetch('Users.json')
       .then(response => response.json())
       .then(json => setUsers(json.users));
   }, []);
 
+
+  const one=()=>{
+    return(
+      <div style={{ display: 'flex', gap: '15px' }}>
+      <WraperComponent modView={EView.list} users={users} />
+      <WraperComponent modView={EView.card} users={users} />
+
+       {/* <Canvas />  */}
+      {/* <ComponentDialog /> */}
+    </div>
+    )
+  }
   return (
     <div className="App">
-      <div style={{ display: 'flex', gap: '15px' }}>
-        <WraperComponent modView={EView.list} users={users} />
-        <WraperComponent modView={EView.card} users={users} />
-        {/* <Canvas /> */}
-        {/* <ComponentDialog /> */}
-      </div>
+      <Canvas/>
+    {/* {one()} */}
     </div>
   );
 }
