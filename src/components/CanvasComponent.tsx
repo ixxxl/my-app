@@ -1,19 +1,23 @@
 import React, { useEffect, useRef } from 'react';
-const mockData: number[]=[300,400,500,150];
-
+const mockData: number[] = [300, 400, 500, 150];
 
 const Canvas = () => {
   const canvasRef = useRef(null);
 
   const draw = (ctx: any) => {
-    ctx.fillStyle = '#000000';
     ctx.beginPath();
-    ctx.lineTo(mockData[0], mockData[1])
-    //ctx.arc(50, 100, 20, 0, 2 * Math.PI);
+    ctx.strokeStyle = 'red';
+    ctx.lineWidth = '5';
+    ctx.moveTo(mockData[0], mockData[1]);
+    ctx.lineTo(mockData[2], mockData[3]);
+    ctx.stroke();
+   // ctx.arc(50, 100, 20, 0, 2 * Math.PI);
     ctx.fill();
   };
   useEffect(() => {
     const canvas: any = canvasRef.current;
+    canvas.width = 600;
+    canvas.height = 400;
     const context: any = canvas.getContext('2d');
 
     const render = () => {
@@ -22,7 +26,7 @@ const Canvas = () => {
     render();
   }, [draw]);
 
-  return <canvas ref={canvasRef} />;
+  return <canvas ref={canvasRef} />; //width={'800px'} height={'600px'}
 };
 export default Canvas;
 

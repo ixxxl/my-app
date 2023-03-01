@@ -6,6 +6,7 @@ import {
   DialogContentText,
   DialogTitle,
 } from '@mui/material';
+import { height } from '@mui/system';
 import { type } from 'os';
 import { useEffect, useState, useRef } from 'react';
 import './App.css';
@@ -83,7 +84,9 @@ function App() {
   }
   return (
     <div className="App">
-      <Canvas/>
+      <div style={{width:"800px", height:"600px", border:"1px solid black"}}>
+      <Canvas />
+      </div>
     {/* {one()} */}
     </div>
   );
