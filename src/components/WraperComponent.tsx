@@ -20,6 +20,7 @@ import { useEffect, useState } from 'react';
 import ContainerListComponent from './ContainerListComponent';
 import FormPropsTextFields from './FormContainer';
 import { shadows } from '@mui/system';
+import Canvas from './CanvasComponent';
 
 // const conf: IViewListUser = {
 //   viewState: EView.card,
@@ -68,15 +69,15 @@ export const WraperComponent = (props: IProps) => {
   //     });
   // };
 
-  useEffect(() => {
-    fetch('http://localhost:3010/credit')
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (myJson) {
-        console.log(myJson);
-      });
-  }, [open]);
+  // useEffect(() => {
+  //   fetch('http://localhost:3010/credit')
+  //     .then(function (response) {
+  //       return response.json();
+  //     })
+  //     .then(function (myJson) {
+  //       console.log(myJson);
+  //     });
+  // }, [open]);
 
   const handlerCard = () => {
     setConfWrap(confWrap => ({
@@ -94,7 +95,6 @@ export const WraperComponent = (props: IProps) => {
           flexDirection: 'column',
           gap: '10px',
           padding: '10px',
-          
         }}
       >
         <Stack direction="row" spacing={1}>
@@ -160,7 +160,9 @@ export const WraperComponent = (props: IProps) => {
             >
               <FormPropsTextFields />
             </div>
-            <canvas className="c1" width={'400px'} height={'300px'} />
+          
+            <Canvas idno={currentUser?.idno} />
+            {/* <canvas className="c1" width={'400px'} height={'300px'} /> */}
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Disagree</Button>

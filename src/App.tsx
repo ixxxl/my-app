@@ -15,7 +15,6 @@ import WraperComponent from './components/WraperComponent';
 import { EView } from './models/ConfigModels';
 import { IUser } from './models/UserModels';
 
-
 // const users: IUser[] = [
 //   {
 //     title: 'Person 1',
@@ -63,31 +62,28 @@ import { IUser } from './models/UserModels';
 function App() {
   const [users, setUsers] = useState<IUser[]>([]);
 
-
   useEffect(() => {
     fetch('Users.json')
       .then(response => response.json())
       .then(json => setUsers(json.users));
   }, []);
 
-
-  const one=()=>{
-    return(
+  const one = () => {
+    return (
       <div style={{ display: 'flex', gap: '15px' }}>
-      <WraperComponent modView={EView.list} users={users} />
-      <WraperComponent modView={EView.card} users={users} />
-
-       {/* <Canvas />  */}
-      {/* <ComponentDialog /> */}
-    </div>
-    )
-  }
+        <WraperComponent modView={EView.list} users={users} />
+        <WraperComponent modView={EView.card} users={users} />
+        {/* <Canvas />  */}
+        {/* <ComponentDialog /> */}
+      </div>
+    );
+  };
   return (
     <div className="App">
-      <div style={{width:"800px", height:"600px", border:"1px solid black"}}>
-      <Canvas />
-      </div>
-    {/* {one()} */}
+      {/* <div
+        style={{ width: '800px', height: '600px', border: '1px solid black' }}
+      ></div> */}
+       {one()}
     </div>
   );
 }
