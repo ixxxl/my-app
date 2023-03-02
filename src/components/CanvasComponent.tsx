@@ -1,62 +1,89 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useAxiosGet } from '../services/hooks/axios';
 // const mockData: number[] = [300, 400, 500, 150];
 interface IProps {
   idno: number | undefined;
 }
-
-
-
-
-
+interface IPoint {
+  x: number;
+  y: number;
+}
 
 const Canvas = (props: IProps) => {
   const canvasRef = useRef(null);
-
+  const [points, setPoints] = useState<IPoint[]>([]);
   const { data, error, loaded } = useAxiosGet(
     `http://localhost:3010/statistic?idno=${props.idno}`
   );
-  let a: number[];
-  let max: number;
-  useEffect(() => {
-    if (data) {
-      a = data[0].semesters;
-      // for(let x of a){
-      //   console.log(x)
 
-      // }
-      console.log(a.length);
-      max = Math.max(...a);
-      console.log(200 / max);
-      console.log(a[0]);
-      // console.log(Math.min(...a))
-    }
-  }, [data]);
-
-  const draw = (ctx: any) => {
+  const drawPoint = (ctx: any, p: IPoint) => {
     ctx.beginPath();
     ctx.strokeStyle = 'red';
     ctx.lineWidth = '5';
+console.log(loaded);
     // ctx.moveTo(50, a);
     // ctx.lineTo(500, a);
-    ctx.fillRect(60, 100, 100, 40);
-    ctx.stroke();
-    // ctx.arc(50, 100, 20, 0, 2 * Math.PI);
-   // ctx.fill();
+    // ctx.fillRect(60, 100, 100, 40);
+    // ctx.stroke();
+    ctx.arc(p.x, p.y, 5, 0, 2 * Math.PI);
+    ctx.fill();
   };
+
+  const drawLine = (ctx: any, p: IPoint) => {};
+
   useEffect(() => {
     const canvas: any = canvasRef.current;
-    canvas.width = 200;
-    canvas.height = 400;
+    canvas.width = 400;
+    canvas.height = 200;
+    const context: any = canvas.getContext('2d');
+
+    const renderLine = () => {
+      for (let p of points) {
+        drawLine(context, p);
+      }
+    };
+    renderLine();
+  }, [drawLine, points]);
+
+  useEffect(() => {
+    let a: number[];
+    let max: number;
+
+    if (data && data.length > 0) {
+      a = data[0].semesters;
+      max = Math.max(...a);
+      let k = 180 / max;
+      let x = 50;
+      let ps: IPoint[] = [];
+      for (let i of a) {
+        let y = 180 - Math.round(i * k);
+        x += 50;
+        ps.push({ x: x, y: y });
+      }
+      setPoints(ps);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    const canvas: any = canvasRef.current;
+    canvas.width = 400;
+    canvas.height = 200;
     const context: any = canvas.getContext('2d');
 
     const render = () => {
-      draw(context);
+      for (let p of points) {
+        drawPoint(context, p);
+      }
     };
     render();
-  }, [draw]);
+  }, [drawPoint, points]);
 
-  return <canvas ref={canvasRef} />; //width={'800px'} height={'600px'}
+  return (
+    <div>
+      <canvas style={{ border: '1px solid red' }} ref={canvasRef} /> 
+    
+    </div>
+  );
 };
 export default Canvas;
 
@@ -70,10 +97,6 @@ export default Canvas;
 //     ctx.stroke();
 //     ctx.fill();
 //   };
-
-
-
-
 
 // const SimpleCanvasExample: React.FC<{}> = () => {
 //   let canvasRef = useRef<HTMLCanvasElement | null>(null);
