@@ -8,4 +8,5 @@ export interface IViewListUser {
 export enum EView {
   card = 'card',
   list = 'list',
+  add = "add"
 }

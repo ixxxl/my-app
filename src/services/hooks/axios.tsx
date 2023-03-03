@@ -42,3 +42,25 @@ export const useAxiosPut = (url: string) => {
 
   return { data, error, loaded };
 };
+
+
+export const useAxiosPost = (url: string) => {
+  const [data, setData] = useState<any | null>(null);
+  const [error, setError] = useState('');
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response: any = await axios.post(url);
+        setData(response.data);
+      } catch (error: any) {
+        setError(error.message);
+      } finally {
+        setLoaded(true);
+      }
+    })();
+  }, []);
+
+  return { data, error, loaded };
+};

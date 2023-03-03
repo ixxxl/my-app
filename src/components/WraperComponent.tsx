@@ -21,6 +21,7 @@ import ContainerListComponent from './ContainerListComponent';
 import FormPropsTextFields from './FormContainer';
 import { shadows } from '@mui/system';
 import Canvas from './CanvasComponent';
+import CanvasColumnar from './Canvas2Component';
 
 // const conf: IViewListUser = {
 //   viewState: EView.card,
@@ -34,6 +35,7 @@ interface IProps {
 
 export const WraperComponent = (props: IProps) => {
   const { users, modView } = props;
+  const [charttt, setCharttt] = useState<string>('');
 
   const [open, setOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState<IUser | null>(null);
@@ -51,7 +53,6 @@ export const WraperComponent = (props: IProps) => {
 
   const setSelectedUser = (user: IUser) => {
     setOpen(true);
-    //getData();
     setCurrentUser(user);
   };
 
@@ -59,26 +60,9 @@ export const WraperComponent = (props: IProps) => {
     setOpen(false);
   };
 
-  // const getData = () => {
-  //   fetch('http://localhost:3010/credit')
-  //     .then(function (response) {
-  //       return response.json();
-  //     })
-  //     .then(function (myJson) {
-  //       console.log(myJson);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   fetch('http://localhost:3010/credit')
-  //     .then(function (response) {
-  //       return response.json();
-  //     })
-  //     .then(function (myJson) {
-  //       console.log(myJson);
-  //     });
-  // }, [open]);
-
+  const buttons = (p: string) => {
+    setCharttt(p);
+  };
   const handlerCard = () => {
     setConfWrap(confWrap => ({
       ...confWrap,
@@ -109,7 +93,11 @@ export const WraperComponent = (props: IProps) => {
           >
             <MoreHorizIcon style={{ display: 'flex' }} />
           </IconButton>
-          <IconButton color="primary" aria-label="add to shopping cart">
+          <IconButton
+            onClick={handlerCard}
+            color="primary"
+            aria-label="add to shopping cart"
+          >
             <AddShoppingCartIcon />
           </IconButton>
         </Stack>
@@ -157,11 +145,14 @@ export const WraperComponent = (props: IProps) => {
                 flexDirection: 'column',
                 fontSize: 20,
               }}
-            >
-              <FormPropsTextFields />
-            </div>
-          
-            <Canvas idno={currentUser?.idno} />
+            ></div>
+            <button onClick={() => buttons('line')}>LineChart</button>
+            <button onClick={() => buttons('column')}>ColumnChart</button>
+            {charttt === 'line' ? (
+              <Canvas idno={currentUser?.idno} />
+            ) : (
+              <CanvasColumnar idno={currentUser?.idno} />
+            )}
             {/* <canvas className="c1" width={'400px'} height={'300px'} /> */}
           </DialogContent>
           <DialogActions>

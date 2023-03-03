@@ -10,6 +10,7 @@ import { height } from '@mui/system';
 import { type } from 'os';
 import { useEffect, useState, useRef } from 'react';
 import './App.css';
+import AddContainerComponent from './components/AddContainerComponent';
 import Canvas from './components/CanvasComponent';
 import WraperComponent from './components/WraperComponent';
 import { EView } from './models/ConfigModels';
@@ -73,6 +74,7 @@ function App() {
       <div style={{ display: 'flex', gap: '15px' }}>
         <WraperComponent modView={EView.list} users={users} />
         <WraperComponent modView={EView.card} users={users} />
+        <AddContainerComponent />
         {/* <Canvas />  */}
         {/* <ComponentDialog /> */}
       </div>
