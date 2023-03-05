@@ -122,6 +122,7 @@ const AddContainerComponent = (props: IProps) => {
   const { title, description, idno, urlPhoto } = props.user;
   const detailsHandler = () => {
     props.setSelectedUser(props.user);
+    console.log(props.user);
   };
 
   return <div onClick={detailsHandler}></div>;

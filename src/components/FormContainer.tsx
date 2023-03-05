@@ -8,24 +8,28 @@ interface IProps {
   idno: number | undefined;
 }
 export default function FormPropsTextFields(props: IProps) {
-  // const [btn, setBtn] = useState<boolean>(false);
+  const [btn, setBtn] = useState<boolean>(false);
+  const [tfValue, setTFValue] = useState<string>('');
+  const [idno, setIdno] = useState<any>();
   const [state, setState] = useState({
-    name: '',
-    job: '',
+    name: tfValue,
+    idno: idno,
   }); //input values. multiple loads, save input from nuttons. dialog to icon, curent user IDNO missing
-  let userData;
+  let userdata;
   const { data, error, loaded } = useAxiosPost(
     `http://localhost:3010/statistic`,
-    userData
+    state
   );
 
   const handlerClick = () => {
-    console.log(`button click Save`);
+    setBtn(true);
+    console.log('field name: ' + tfValue);
+    console.log('field idno: ' + idno);
   };
 
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [handlerClick]);
+  useEffect(() => {
+    console.log(data);
+  }, [btn]);
 
   return (
     <Box
@@ -38,12 +42,14 @@ export default function FormPropsTextFields(props: IProps) {
     >
       <div>
         <TextField
+          onChange={newValue => setTFValue(newValue.target.value)}
           required
           id="outlined-required"
           label="Your Name"
           placeholder="Your Name"
         />
         <TextField
+          onChange={num => setIdno(num.target.value)}
           required
           id="outlined-number"
           label="IDNO"
@@ -52,7 +58,7 @@ export default function FormPropsTextFields(props: IProps) {
             shrink: true,
           }}
         />
-        <Button onSubmit={handlerClick} type="submit" variant="text">
+        <Button onClick={handlerClick} variant="text">
           Save user
         </Button>
         <Button variant="text">Remove user</Button>

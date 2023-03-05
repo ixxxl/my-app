@@ -9,6 +9,7 @@ import {
 import { useState } from 'react';
 import { EView, IViewListUser } from '../models/ConfigModels';
 import { IUser } from '../models/UserModels';
+import AddContainerComponent from './AddContainerComponent';
 import FormPropsTextFields from './FormContainer';
 
 interface IProps {
