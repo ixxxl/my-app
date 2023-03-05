@@ -11,7 +11,6 @@ interface IPoint {
 
 const Canvas = (props: IProps) => {
   const canvasRef = useRef(null);
-  const canvasRefLine = useRef(null);
   const [points, setPoints] = useState<IPoint[]>([]);
   const { data, error, loaded } = useAxiosGet(
     `http://localhost:3010/statistic?idno=${props.idno}`

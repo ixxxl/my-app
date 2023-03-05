@@ -1,9 +1,32 @@
 import { Button } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { useEffect, useState } from 'react';
 import { useAxiosPost } from '../services/hooks/axios';
+import AddContainerComponent from './AddContainerComponent';
+interface IProps {
+  idno: number | undefined;
+}
+export default function FormPropsTextFields(props: IProps) {
+  // const [btn, setBtn] = useState<boolean>(false);
+  const [state, setState] = useState({
+    name: '',
+    job: '',
+  }); //input values. multiple loads, save input from nuttons. dialog to icon, curent user IDNO missing
+  let userData;
+  const { data, error, loaded } = useAxiosPost(
+    `http://localhost:3010/statistic`,
+    userData
+  );
 
-export default function FormPropsTextFields() {
+  const handlerClick = () => {
+    console.log(`button click Save`);
+  };
+
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [handlerClick]);
+
   return (
     <Box
       component="form"
@@ -21,14 +44,18 @@ export default function FormPropsTextFields() {
           placeholder="Your Name"
         />
         <TextField
+          required
           id="outlined-number"
-          label="How much credit do you want"
+          label="IDNO"
           type="number"
           InputLabelProps={{
             shrink: true,
           }}
         />
-        <Button variant="text">Send </Button>
+        <Button onSubmit={handlerClick} type="submit" variant="text">
+          Save user
+        </Button>
+        <Button variant="text">Remove user</Button>
 
         {/* <TextField
           id="outlined-password-input"

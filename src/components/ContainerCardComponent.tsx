@@ -41,7 +41,6 @@ const ContainerComponent = (props: IProps) => {
             flexDirection: 'column',
             alignItems: 'flex-start',
             paddingLeft: '10px',
-            
           }}
         >
           <Typography sx={{ fontSize: 20 }} color="text.primary">
@@ -54,26 +53,6 @@ const ContainerComponent = (props: IProps) => {
         <IconButton onClick={detailsHandler}>
           <PlayArrowIcon color={'success'} />
         </IconButton>
-        {/* <Divider /> */}
-
-        {/* <Card sx={{ minWidth: 275 }}> 
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Имя Фамилияasdasdas {title}
-          </Typography>
-          <Typography variant="h5" component="div">
-            IDNO {idno}
-          </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            Описание {description}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small" onClick={detailsHandler}>
-            Details
-          </Button>
-        </CardActions>
-       </Card> */}
       </div>
       <Divider />
     </div>

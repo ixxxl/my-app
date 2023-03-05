@@ -13,6 +13,7 @@ import './App.css';
 import AddContainerComponent from './components/AddContainerComponent';
 import Canvas from './components/CanvasComponent';
 import WraperComponent from './components/WraperComponent';
+import WraperDialog from './components/WraperDialog';
 import { EView } from './models/ConfigModels';
 import { IUser } from './models/UserModels';
 
@@ -74,7 +75,7 @@ function App() {
       <div style={{ display: 'flex', gap: '15px' }}>
         <WraperComponent modView={EView.list} users={users} />
         <WraperComponent modView={EView.card} users={users} />
-        <AddContainerComponent />
+        <WraperDialog modView={EView.add} users={users} />
         {/* <Canvas />  */}
         {/* <ComponentDialog /> */}
       </div>
@@ -85,7 +86,7 @@ function App() {
       {/* <div
         style={{ width: '800px', height: '600px', border: '1px solid black' }}
       ></div> */}
-       {one()}
+      {one()}
     </div>
   );
 }

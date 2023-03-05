@@ -23,11 +23,6 @@ import { shadows } from '@mui/system';
 import Canvas from './CanvasComponent';
 import CanvasColumnar from './Canvas2Component';
 
-// const conf: IViewListUser = {
-//   viewState: EView.card,
-//   viewImage: false,
-// };
-
 interface IProps {
   users: IUser[];
   modView: EView;
@@ -63,10 +58,18 @@ export const WraperComponent = (props: IProps) => {
   const buttons = (p: string) => {
     setCharttt(p);
   };
+
   const handlerCard = () => {
     setConfWrap(confWrap => ({
       ...confWrap,
       viewState: EView.card,
+    }));
+  };
+
+  const handlerAdd = () => {
+    setConfWrap(confWrap => ({
+      ...confWrap,
+      viewState: EView.add,
     }));
   };
 
@@ -94,9 +97,9 @@ export const WraperComponent = (props: IProps) => {
             <MoreHorizIcon style={{ display: 'flex' }} />
           </IconButton>
           <IconButton
-            onClick={handlerCard}
+            onClick={() => alert('open dialog')} //open dialog
             color="primary"
-            aria-label="add to shopping cart"
+            aria-label="add Axios"
           >
             <AddShoppingCartIcon />
           </IconButton>

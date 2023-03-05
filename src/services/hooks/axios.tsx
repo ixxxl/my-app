@@ -43,8 +43,7 @@ export const useAxiosPut = (url: string) => {
   return { data, error, loaded };
 };
 
-
-export const useAxiosPost = (url: string) => {
+export const useAxiosPost = (url: string, user: any) => {
   const [data, setData] = useState<any | null>(null);
   const [error, setError] = useState('');
   const [loaded, setLoaded] = useState(false);
@@ -52,7 +51,28 @@ export const useAxiosPost = (url: string) => {
   useEffect(() => {
     (async () => {
       try {
-        const response: any = await axios.post(url);
+        const response: any = await axios.post(url, user);
+        setData(response.data);
+      } catch (error: any) {
+        setError(error.message);
+      } finally {
+        setLoaded(true);
+      }
+    })();
+  }, []);
+
+  return { data, error, loaded };
+};
+
+export const useAxiosDelete = (url: string, id: any) => {
+  const [data, setData] = useState<any | null>(null);
+  const [error, setError] = useState('');
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response: any = await axios.delete(url, id);
         setData(response.data);
       } catch (error: any) {
         setError(error.message);
