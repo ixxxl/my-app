@@ -8,6 +8,8 @@ import {
   DialogTitle,
   IconButton,
   Stack,
+  ToggleButton,
+  ToggleButtonGroup,
 } from '@mui/material';
 import { IUser } from '../models/UserModels';
 import AlarmIcon from '@mui/icons-material/Alarm';
@@ -31,13 +33,20 @@ interface IProps {
 export const WraperComponent = (props: IProps) => {
   const { users, modView } = props;
   const [charttt, setCharttt] = useState<string>('');
-
+  const [alignment, setAlignment] = useState('web');
   const [open, setOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState<IUser | null>(null);
   const [confWrap, setConfWrap] = useState<IViewListUser>({
     viewState: modView,
     viewImage: false,
   });
+
+  const handleChange = (
+    event: React.MouseEvent<HTMLElement>,
+    newAlignment: string
+  ) => {
+    setAlignment(newAlignment);
+  };
 
   const handlerList = () => {
     setConfWrap(confWrap => ({
@@ -149,6 +158,21 @@ export const WraperComponent = (props: IProps) => {
                 fontSize: 20,
               }}
             ></div>
+            <ToggleButtonGroup
+              color="primary"
+              value={alignment}
+              exclusive
+              onChange={handleChange}
+              aria-label="Platform"
+            >
+              <ToggleButton onClick={() => buttons('line')} value="web">
+                Line
+              </ToggleButton>
+              <ToggleButton onClick={() => buttons('column')} value="android">
+                Column
+              </ToggleButton>
+            </ToggleButtonGroup>
+            <></>
             <Button
               style={{ background: charttt === 'line' ? 'gray' : '' }}
               onClick={() => buttons('line')}
