@@ -149,8 +149,18 @@ export const WraperComponent = (props: IProps) => {
                 fontSize: 20,
               }}
             ></div>
-            <button onClick={() => buttons('line')}>LineChart</button>
-            <button onClick={() => buttons('column')}>ColumnChart</button>
+            <Button
+              style={{ background: charttt === 'line' ? 'gray' : '' }}
+              onClick={() => buttons('line')}
+            >
+              LineChart
+            </Button>
+            <Button
+              style={{ background: charttt === 'column' ? 'gray' : '' }}
+              onClick={() => buttons('column')}
+            >
+              ColumnChart
+            </Button>
             {charttt === 'line' ? (
               <Canvas idno={currentUser?.idno} />
             ) : (

@@ -8,7 +8,7 @@ interface IProps {
   idno: number | undefined;
 }
 export default function FormPropsTextFields(props: IProps) {
-  const [btn, setBtn] = useState<boolean>(false);
+  const [btn, setBtn] = useState<boolean>();
   const [tfValue, setTFValue] = useState<string>('');
   const [idno, setIdno] = useState<any>();
   const [state, setState] = useState({
@@ -18,13 +18,16 @@ export default function FormPropsTextFields(props: IProps) {
   let userdata;
   const { data, error, loaded } = useAxiosPost(
     `http://localhost:3010/statistic`,
-    state
+    'testUser: 123'
+    //state
   );
 
   const handlerClick = () => {
     setBtn(true);
     console.log('field name: ' + tfValue);
     console.log('field idno: ' + idno);
+    const temp = [tfValue, idno];
+    // setState(temp)
   };
 
   useEffect(() => {

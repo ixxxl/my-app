@@ -1,15 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { dX, IPoint, IProps } from '../models/ConfigModels';
 import { useAxiosGet } from '../services/hooks/axios';
 // const mockData: number[] = [300, 400, 500, 150];
 const colorColumn:string[]=["red","blue","green","yellow"] 
-const dX =50
-interface IProps {
-  idno: number | undefined;
-}
-interface IPoint {
-  x: number;
-  y: number;
-}
 
 
 const CanvasColumnar = (props: IProps) => {

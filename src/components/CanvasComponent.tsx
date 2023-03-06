@@ -1,13 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { IPoint, IProps } from '../models/ConfigModels';
 import { useAxiosGet } from '../services/hooks/axios';
-// const mockData: number[] = [300, 400, 500, 150];
-interface IProps {
-  idno: number | undefined;
-}
-interface IPoint {
-  x: number;
-  y: number;
-}
 
 const Canvas = (props: IProps) => {
   const canvasRef = useRef(null);
@@ -15,6 +8,7 @@ const Canvas = (props: IProps) => {
   const { data, error, loaded } = useAxiosGet(
     `http://localhost:3010/statistic?idno=${props.idno}`
   );
+
   const drawPoint = (ctx: any, p: IPoint) => {
     ctx.beginPath();
     ctx.lineWidth = '5';
