@@ -29,11 +29,17 @@ interface IProps {
   users: IUser[];
   modView: EView;
 }
+enum ETypeChart {
+  line = 'line',
+  column = 'column',
+}
 
 export const WraperComponent = (props: IProps) => {
   const { users, modView } = props;
   const [charttt, setCharttt] = useState<string>('');
-  const [alignment, setAlignment] = useState('web');
+  const [viewTypeChart, setviewTypeChart] = useState<ETypeChart>(
+    ETypeChart.line
+  );
   const [open, setOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState<IUser | null>(null);
   const [confWrap, setConfWrap] = useState<IViewListUser>({
@@ -45,7 +51,7 @@ export const WraperComponent = (props: IProps) => {
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string
   ) => {
-    setAlignment(newAlignment);
+    setviewTypeChart(newAlignment);
   };
 
   const handlerList = () => {
